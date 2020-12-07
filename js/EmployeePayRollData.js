@@ -21,11 +21,11 @@ class EmployeePayRollData {
     }
 
     set name(name) {
-        let nameRegex = /[A-Z]{1}[a-z]{2,}/;
+        let nameRegex = /^[A-Z]{1}[a-z]{2,}$/;
         if (nameRegex.test(name))
             this.name = name;
-        else
-            throw "Invalid name";
+        else throw "Invalid name";
+            
     }
 
     get picture() {

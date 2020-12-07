@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/AddEmpformStyleSheet.css">
-    <link href="http://fonts.googleapis.com/css2?family=Roboto:wght@380,480,500;688&display=swap" rel="stylesheet">
+    <!-- <link href="http://fonts.googleapis.com/css2?family=Roboto:wght@380,480,500;688&display=swap" rel="stylesheet"> -->
     <title>Employee Payroll Form</title>
 </head>
 
@@ -20,7 +20,7 @@
         </div>
     </header>
     <div class="form-content">
-        <form class="form" action="#" onsubmit="save();return false">
+        <form id="empForm" class="form" action="#" onreset="resetForm()" onsubmit="saveForm()">
             <div class="form-head">Employee Payroll Form</div>
             <div class="row-content">
                 <label class="label text" for="name">Name</label>
@@ -148,7 +148,7 @@
             <div class="buttonParent">
                 <a href="" class="button cancelButton" id="cancelButton">Cancel</a>
                 <div class="submit-reset">
-                    <button type="submit" class="button submitButton" id="submitButton">Submit</button>
+                    <button type="submit" class="button submitButton" id="submitButton" onsubmit=saveForm()>Submit</button>
                     <button type="reset" class="resetButton button" id="resetButton">Reset</button>
                 </div>
             </div>
@@ -186,7 +186,8 @@
 
         const saveForm = () => {
             try {
-                let EmployeeData = createEmployeePayroll();
+                let employeePayroll = createEmployeePayroll();
+                createAndUpdateStorage(employeePayroll);
             } catch (e) {
                 return
             }
@@ -194,8 +195,10 @@
 
         const createEmployeePayroll = () => {
             let employeePayroll = new EmployeePayRollData();
+            alert("hi");
             try {
                 employeePayroll.name = getInputValueById('#name');
+                console.log(employeePayroll);
             } catch (e) {
                 setTextValue('.text-error', e);
                 throw e;
@@ -207,7 +210,9 @@
             employeePayroll.notes = getInputValueById('#notes');
             let date = getInputValueById('#day') + " " + getInputValueById('#month') + " " + getInputValueById('#year');
             employeePayroll.date = Date.parse(date);
+            console.log(employeePayroll);
             alert(employeePayroll.toString());
+            
             return employeePayroll;
         }
 
@@ -229,7 +234,18 @@
             let value = document.getElementById(id).value;
             return value;
         }
+        function createAndUpdateStorage(employeePayroll) {
+    let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
+    if (employeePayrollList != undefined) {
+        employeePayrollList.push(employeePayroll);
+    } else {
+        employeePayrollList = [employeePayroll];
+    }
+    alert(employeePayrollList.toString());
+    localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
+}
     </script>
+    <script src="../js/EmployeePayRollData.js"></script>
 </body>
 
 </html>
