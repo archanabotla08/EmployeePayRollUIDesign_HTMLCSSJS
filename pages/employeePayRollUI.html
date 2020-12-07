@@ -149,7 +149,7 @@
                 <a href="" class="button cancelButton" id="cancelButton">Cancel</a>
                 <div class="submit-reset">
                     <button type="submit" class="button submitButton" id="submitButton">Submit</button>
-                    <button type="reset" class="resetButton button">Reset</button>
+                    <button type="reset" class="resetButton button" id="resetButton">Reset</button>
                 </div>
             </div>
     </div>
@@ -166,14 +166,23 @@
         rangeslider.oninput = function () {
             output.innerHTML = this.value;
         }
-        const text = document.querySelector('#name');
+        window.addEventListener('DOMContentLoaded', (event) => {
+        const name = document.querySelector('#name');
         const textError = document.querySelector('.text-error');
-        text.addEventListener('input', function () {
-            const regName = /^[A-Z]{1}[a-z]{2,}$/;
-            if (regName.test(text.value))
+        name.addEventListener('input', function () {
+            if (name.value.length == 0){
                 textError.textContent = "";
-            else textError.textContent = "Invalid first name ";
+                return;
+            }
+            try{
+                (new EmployeePayRollData()).name = name.value;
+                textError.textContent="";
+            }catch(e){
+                textError.textContent = e;
+            }
+              
         });
+    });
         document.getElementById("submit").onclick = function () {
             let employee = new EmployeePayRollData();
             employee.name = document.getElementById("name").value;
@@ -184,6 +193,7 @@
             employee.notes = document.getElementById("notes").value;
             employee.startDate = new Date(parseInt(document.getElementById("year").value), parseInt(document.getElementById("month").value), parseInt(document.getElementById("day").value));
         };
+       
     </script>
 </body>
 
