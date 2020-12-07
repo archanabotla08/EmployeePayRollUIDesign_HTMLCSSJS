@@ -72,7 +72,7 @@
                 <div class="row-content">
                     <label class="label text" for="salary">Salary</label>
                     <input class="input" type="range" name="salary" id="salary" max="800000" min="600000" step="100" value=700000>
-                    <output class="Salary-output text" for="salary">700000</output>
+                    <output class="Salary-output text" id="salaryOutput" for="salary">700000</output>
                 </div>
                 <div class="row-content">
                     <label class="label text" for="startdate">Start Date</label>
@@ -150,5 +150,25 @@
        
             </form>
         </div>
+        <script>
+            var rangeslider = document.getElementById("salary");
+            var output = document.getElementById("salaryOutput");
+            output.innerHTML = rangeslider.value;
+    
+            rangeslider.oninput = function () {
+                output.innerHTML = this.value;
+            }
+
+            document.getElementById("submit").onclick = function() {
+    let employee = new EmployeePayRollData();
+    employee.name = document.getElementById("name").value;
+    employee.picture = document.querySelector('input[name = profile]:checked').value;
+    employee.gender = document.querySelector('input[name = gender]:checked').value;
+    employee.department = document.querySelector('input[name = department]:checked').value;
+    employee.salary = document.getElementById("salary").value;
+    employee.notes = document.getElementById("notes").value;
+    employee.startDate = new Date(parseInt(document.getElementById("year").value), parseInt(document.getElementById("month").value), parseInt(document.getElementById("day").value));
+};
+        </script>
     </body>
 </html>
