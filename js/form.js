@@ -6,6 +6,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
             textError.textContent = "";
             return;
         }
+        // if(name.value.length < 3){
+        //     textError.textContent = "Inavlid name";
+        // }else{
+        //     textError.textContent = "";
+        // }
+       
         try{
             (new EmployeePayRollData()).name = name.value;
             textError.textContent="";
@@ -24,17 +30,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 const save = () => {
     try {
-        console.log("hi")
-        let employeePayroll = createEmployeePayroll();
- 
+        let employeePayroll = createEmployeePayroll(); 
+        createAndUpdateStorage(employeePayroll);
     } catch (e) {
         return
     }
 }
 
 const createEmployeePayroll = () => {
+    
     let employeePayroll = new EmployeePayRollData();
-   
     try {
         employeePayroll.name = getInputValueById('#name');
     } catch (e) {
@@ -48,7 +53,8 @@ const createEmployeePayroll = () => {
     employeePayroll.notes = getInputValueById('#notes');
     let date = getInputValueById('#day') + " " + getInputValueById('#month') + " " + getInputValueById('#year');
     employeePayroll.date = Date.parse(date);
-    alert(employeePayroll.toString);
+    console.log(employeePayroll.toString());
+    alert(employeePayroll.toString());
     return employeePayroll;
 }
 const getSelectedValues = (propertyValue) => {
@@ -68,6 +74,16 @@ const getInputValueById = (id) => {
 const getInputElementValue = (id) => {
     let value = document.getElementById(id).value;
     return value;
+}
+function createAndUpdateStorage(employeePayroll) {
+    let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
+    if (employeePayrollList != undefined) {
+        employeePayrollList.push(employeePayroll);
+    } else {
+        employeePayrollList = [employeePayroll];
+    }
+    alert(employeePayrollList.toString());
+    localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
 }
 function resetForm() {
     document.getElementById("formId").reset();
