@@ -1,11 +1,17 @@
+let employeePayrollList;
 window.addEventListener("DOMContentLoaded", (event) => {
+    employeePayrollList = getEmployeePayrollDataFromStorage();
+    document.querySelector(".emp-count").textContent = employeePayrollList.length;
     createInnerHtml();
 });
-
+const getEmployeePayrollDataFromStorage = () => {
+    return localStorage.getItem('EmployeePayrollList') ? JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
+}
 const createInnerHtml = () => {
     const headerHtml = "<tr><th></th><th>Name</th><th>Gender</th><th>Department</th><th>Salary</th><th>Start Date</th><th>Actions</th></tr>"
+    if(employeePayrollList.length == 0) return;  
     let innerHtml = `${headerHtml}`
-    let employeePayrollList = createEmployeePayrollJSON();
+  //  let employeePayrollList = createEmployeePayrollJSON();
     for (const employee of employeePayrollList) {
         innerHtml = `${innerHtml}
     <tr>
@@ -27,31 +33,9 @@ const createInnerHtml = () => {
     document.querySelector("#display").innerHTML = innerHtml;
 };
 
-const createEmployeePayrollJSON = () => {
-    let employeeListLocal = [{
-            _name: "Priti",
-            _gender: "Female",
-            _department: ["Hr", "Engineering"],
-            _salary: "900000",
-            _startDate: "09 Mar 2020",
-            _note: "",
-            _id: new Date().getTime(),
-            _picture: "../assets/profileImages/Ellipse -1.png"
-        },
-        {
-            _name: "Nitin",
-            _gender: "Male",
-            _department: ["Finance", "Engineering"],
-            _salary: "550000",
-            _startDate: "27 Apr 2015",
-            _note: "",
-            _id: new Date().getTime() + 1,
-            _picture: "../assets/profileImages/Ellipse -3.png"
-        }
-    ];
-    return employeeListLocal;
-};
-
+function remove(employeePayrollList) {
+    localStorage.removeItem(employeePayrollList);
+}
 const getDeptHtml = (departmentList) => {
     let deptHtml = "";
     for (const dept of departmentList) {
@@ -59,3 +43,27 @@ const getDeptHtml = (departmentList) => {
     }
     return deptHtml;
 };
+// const createEmployeePayrollJSON = () => {
+//     let employeeListLocal = [{
+//             _name: "Priti",
+//             _gender: "Female",
+//             _department: ["Hr", "Engineering"],
+//             _salary: "900000",
+//             _startDate: "09 Mar 2020",
+//             _note: "",
+//             _id: new Date().getTime(),
+//             _picture: "../assets/profileImages/Ellipse -1.png"
+//         },
+//         {
+//             _name: "Nitin",
+//             _gender: "Male",
+//             _department: ["Finance", "Engineering"],
+//             _salary: "550000",
+//             _startDate: "27 Apr 2015",
+//             _note: "",
+//             _id: new Date().getTime() + 1,
+//             _picture: "../assets/profileImages/Ellipse -3.png"
+//         }
+//     ];
+//     return employeeListLocal;
+// };
