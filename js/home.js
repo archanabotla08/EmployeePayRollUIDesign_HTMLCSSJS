@@ -33,8 +33,13 @@ const createInnerHtml = () => {
     document.querySelector("#display").innerHTML = innerHtml;
 };
 
-function remove(employeePayrollList) {
-    localStorage.removeItem(employeePayrollList);
+const remove = (node) => {
+    let employeeData = employeePayrollList.find(empData => empData._name == node.id);
+    if (!employeeData) return;
+    const index = employeePayrollList.map(empData => empData._name).indexOf(employeeData._name);
+    employeePayrollList.splice(index, 1);
+    localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
+    createInnerHtml();
 }
 const getDeptHtml = (departmentList) => {
     let deptHtml = "";
