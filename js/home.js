@@ -3,9 +3,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
     employeePayrollList = getEmployeePayrollDataFromStorage();
     document.querySelector(".emp-count").textContent = employeePayrollList.length;
     createInnerHtml();
+    localStorage.removeItem("editEmp");
 });
 const getEmployeePayrollDataFromStorage = () => {
-    return localStorage.getItem('EmployeePayrollList') ? JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
+    console.log("values-->",JSON.parse(localStorage.getItem('EmployeeList')));
+    return localStorage.getItem('EmployeeList') ? JSON.parse(localStorage.getItem('EmployeeList')) : [];
 }
 const createInnerHtml = () => {
     const headerHtml = "<tr><th>Picture</th><th>Name</th><th>Gender</th><th>Department</th><th>Salary</th><th>Start Date</th><th>Actions</th></tr>"
@@ -13,6 +15,7 @@ const createInnerHtml = () => {
     let innerHtml = `${headerHtml}`
   //  let employeePayrollList = createEmployeePayrollJSON();
     for (const employee of employeePayrollList) {
+        let displayDate = stringifyDate(employee._startDate);
         innerHtml = `${innerHtml}
     <tr>
     <td>
@@ -22,7 +25,7 @@ const createInnerHtml = () => {
     <td>${employee._gender}</td>
     <td>${getDeptHtml(employee._department)}</td>
     <td>${employee._salary}</td>
-    <td>${stringifyDate(employee._startDate)}</td>
+    <td>${displayDate}</td>
     <td>
         <img id="${employee._name}" onclick="remove(this)" alt="delete" src="../assets/icons/delete-black-18dp.svg">
         <img id="${employee._name}" alt="edit" onclick="update(this)" src="../assets/icons/create-black-18dp.svg">
