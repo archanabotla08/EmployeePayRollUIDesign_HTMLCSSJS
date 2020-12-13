@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/AddEmpformStyleSheet.css">
     <!-- <link href="http://fonts.googleapis.com/css2?family=Roboto:wght@380,480,500;688&display=swap" rel="stylesheet"> -->
+    <script src="../js/form.js"></script>
+    <script src="../js/home.js"></script>
+    <script src="../js/utility.js"></script>
+    <script src="../js/siteProperties.js"></script>
+    <script src="../js/EmployeePayRollData.js"></script>
     <title>Employee Payroll Form</title>
 </head>
 
@@ -19,10 +24,9 @@
             </div>
         </div>
     </header>
-    <script src="../js/form.js"></script>
-    <script src="../js/EmployeePayRollData.js"></script>
+
     <div id="formId" class="form-content">
-        <form class="form" action="#" onreset="resetForm()" onsubmit="save()">
+        <form class="form"  name="emp" action="#" onreset="resetForm()" onsubmit="saveForm(event)">
             <div class="form-head">Employee Payroll Form</div>
             <div class="row-content">
                 <label class="label text" for="name">Name</label>
@@ -149,7 +153,7 @@
                 <textarea id="notes" class="input" name="notes" placeholder="" style="height: 100px;"></textarea>
             </div>
             <div class="buttonParent">
-                <a href="../pages/eprHomePage.html" class="button cancelButton" id="cancelButton">Cancel</a>
+                <a class="button cancelButton" id="cancelButton">Cancel</a>
                 <div class="submit-reset">
                     <button type="submit" class="button submitButton" id="submitButton">Submit</button>
                     <button type="reset" class="resetButton button" id="resetButton">Reset</button>

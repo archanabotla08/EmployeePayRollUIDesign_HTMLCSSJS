@@ -10,7 +10,7 @@
       "_startDate": "07 Nov 2020",
       "_notes": "Good Morning",
       "id": 1,
-      "_profileUrl": "../assets/profileImages/Ellipse -1.png"
+      "_profilePic": "../assets/profileImages/Ellipse -1.png"
     },
     {
       "_name": "Anant Sharma",
@@ -22,7 +22,7 @@
       "_startDate": "02 Mar 2020",
       "_notes": "Hi Guys",
       "id": 2,
-      "_profileUrl": "../assets/profileImages/Ellipse -3.png"
+      "_profilePic": "../assets/profileImages/Ellipse -3.png"
     },
     {
       "_name": "Monica Mishra",
@@ -34,7 +34,7 @@
       "_startDate": "08 Apr 2018",
       "_notes": "jai Shri Krishna",
       "id": 3,
-      "_profileUrl": "../assets/profileImages/Ellipse -10.png"
+      "_profilePic": "../assets/profileImages/Ellipse -10.png"
     },
     {
       "_name": "Sri",
@@ -45,7 +45,7 @@
       "_salary": "900000",
       "_startDate": "09 Feb 2019",
       "_notes": "hey people",
-      "_profileUrl": "../assets/profileImages/Ellipse -4.png",
+      "_profilePic": "../assets/profileImages/Ellipse -4.png",
       "id": 4
     }
   ]
