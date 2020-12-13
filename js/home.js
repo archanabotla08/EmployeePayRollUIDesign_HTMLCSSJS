@@ -24,7 +24,7 @@ const createInnerHtml = () => {
     <td>${employee._salary}</td>
     <td>${employee._startDate}</td>
     <td>
-        <img id="${employee._id}" onclick="remove(this)" alt="delete" src="../assets/icons/delete-black-18dp.svg">
+        <img id="${employee._name}" onclick="remove(this)" alt="delete" src="../assets/icons/delete-black-18dp.svg">
         <img id="${employee._id}" alt="edit" onclick="update(this)" src="../assets/icons/create-black-18dp.svg">
     </td>
  </tr>
@@ -41,34 +41,10 @@ const remove = (node) => {
     localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
     createInnerHtml();
 }
-const getDeptHtml = (departmentList) => {
+const getDeptHtml = (deptList) => {
     let deptHtml = "";
-    for (const dept of departmentList) {
+    for (const dept of deptList) {
         deptHtml = `${deptHtml}<div class="dept-label">${dept}</div>`
     }
     return deptHtml;
 };
-// const createEmployeePayrollJSON = () => {
-//     let employeeListLocal = [{
-//             _name: "Priti",
-//             _gender: "Female",
-//             _department: ["Hr", "Engineering"],
-//             _salary: "900000",
-//             _startDate: "09 Mar 2020",
-//             _note: "",
-//             _id: new Date().getTime(),
-//             _picture: "../assets/profileImages/Ellipse -1.png"
-//         },
-//         {
-//             _name: "Nitin",
-//             _gender: "Male",
-//             _department: ["Finance", "Engineering"],
-//             _salary: "550000",
-//             _startDate: "27 Apr 2015",
-//             _note: "",
-//             _id: new Date().getTime() + 1,
-//             _picture: "../assets/profileImages/Ellipse -3.png"
-//         }
-//     ];
-//     return employeeListLocal;
-// };
