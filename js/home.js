@@ -36,9 +36,9 @@ const createInnerHtml = () => {
 function remove(employeePayrollList) {
     localStorage.removeItem(employeePayrollList);
 }
-const getDeptHtml = (departmentList) => {
+const getDeptHtml = (deptList) => {
     let deptHtml = "";
-    for (const dept of departmentList) {
+    for (const dept of deptList) {
         deptHtml = `${deptHtml}<div class="dept-label">${dept}</div>`
     }
     return deptHtml;

@@ -64,20 +64,20 @@
                 </div>
             </div>
             <div class="row-content">
-                <label class="label text" for="department">Department</label>
-                <div>
-                    <input class="checkbox" type="checkbox" name="hr" id="hr" value="hr">
-                    <label class=" text" for="hr">Hr</label>
-                    <input class="checkbox" type="checkbox" name="sales" id="sales" value="sales">
-                    <label class=" text" for="sales">Sales</label>
-                    <input class="checkbox" type="checkbox" name="finance" id="finance" value="finance">
-                    <label class=" text" for="finance">Finance</label>
-                    <input class="checkbox" type="checkbox" name="engineer" id="engineer" value="engineer">
-                    <label class=" text" for="engineer">Engineer</label>
-                    <input class="checkbox" type="checkbox" name="other" id="other" value="other">
-                    <label class=" text" for="other">Other</label>
-                </div>
-            </div>
+              <label class="label text" for="department">Department</label>
+              <div>
+                  <input class="checkbox" type="checkbox" name="department" id="hr" value="hr">
+                  <label class=" text" for="hr">Hr</label>
+                  <input class="checkbox" type="checkbox" name="department" id="sales" value="sales">
+                  <label class=" text" for="sales">Sales</label>
+                  <input class="checkbox" type="checkbox" name="department" id="finance" value="finance">
+                  <label class=" text" for="finance">Finance</label>
+                  <input class="checkbox" type="checkbox" name="department" id="engineer" value="engineer">
+                  <label class=" text" for="engineer">Engineer</label>
+                  <input class="checkbox" type="checkbox" name="department" id="other" value="other">
+                  <label class=" text" for="other">Other</label>
+              </div>
+          </div>
             <div class="row-content">
                 <label class="label text" for="salary">Salary</label>
                 <input class="input" type="range" name="salary" id="salary" max="800000" min="600000" step="100"
@@ -86,7 +86,7 @@
             </div>
             <div class="row-content">
                 <label class="label text" for="startdate">Start Date</label>
-                <div>
+                <div id="date">
                     <select id="day" name="day">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -142,13 +142,14 @@
                         <option value="2016">2016</option>
                     </select>
                 </div>
+                <error-output class="date-error" for="startdate"></error-output>
             </div>
             <div class="row-content">
                 <label class="label text" for="notes">Notes</label>
                 <textarea id="notes" class="input" name="notes" placeholder="" style="height: 100px;"></textarea>
             </div>
             <div class="buttonParent">
-                <a href="" class="button cancelButton" id="cancelButton">Cancel</a>
+                <a href="../pages/eprHomePage.html" class="button cancelButton" id="cancelButton">Cancel</a>
                 <div class="submit-reset">
                     <button type="submit" class="button submitButton" id="submitButton">Submit</button>
                     <button type="reset" class="resetButton button" id="resetButton">Reset</button>

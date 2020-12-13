@@ -1,80 +1,60 @@
 class EmployeePayRollData {
 
-    get id() {
-        return this.id;
-    }
+    //getter and setter method
+    get id() { return this._id; }
     set id(id) {
-        this.id = id;
+        this._id = id;
     }
 
-    get name() {
-        return this.name;
-    }
-
+    get name() { return this._name; }
     set name(name) {
-        let nameRegex = /^[A-Z][a-z]{2,}$/;
-        if (nameRegex.test(name))
-            this.name = name;
-        else
-            throw "Invalid name";
+        let nameRegex=RegExp('^[A-Z]{1}[a-zA-Z\\s]{2,}$');
+        if(nameRegex.test(name))
+            this._name=name;
+        else throw ' Name is Incorrect ';
     }
 
-    get picture() {
-        return this.picture;
-    }
-    set picture(picture) {
-        this.picture = picture;
+    get profilePic() { return this._profilePic; }
+    set profilePic(profilePic) {
+        this._profilePic = profilePic;
     }
 
-    get gender() {
-        return this.gender;
-    }
-
+    get gender() { return this._gender; }
     set gender(gender) {
-        this.gender = gender;
+        this._gender = gender;
     }
 
-    get department() {
-        return this.department;
-    }
-
+    get department() { return this._department; }
     set department(department) {
-        this.department = department;
+        this._department = department;
     }
 
-    get salary() {
-        return this.salary;
-    }
-
+    get salary() { return this._salary; }
     set salary(salary) {
-        this.salary = salary;
+        this._salary = salary;
     }
 
-    get startDate() {
-        return this.startDate;
+    get note() { return this._note;}
+    set note(note) {
+        this._note = note;
     }
 
+    get startDate() { return this._startDate; }
     set startDate(startDate) {
-        startDate = startDate.getTime() + (30 * 24 * 60 * 60 * 1000);
-        let today = new Date().getTime() + (30 * 24 * 60 * 60 * 1000);
-        if (today >= startDate) {
-            this.startDate = startDate;
+       // this._startDate = startDate + 1;
+        if (startDate != new Date()) {
+            this._startDate = startDate + 1;
         } else {
-            ("Invalid date");
+            throw "Invalid date";
         }
     }
 
-    get notes() {
-        return this.notes;
-    }
-
-    set notes(notes) {
-        this.notes = notes;
-    }
-
+    //method
     toString() {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        const empDate = !this.startDate ? "undefined" : this.startDate.toLocaleDateString("en-US", options);
-        return "id = " + this.id + ", name = " + this.name + ", gender = " + this.gender + ", profile picture = " + this.picture + ", department = " + this.department + ", salary = " + this.salary + ", startDate = " + this.startDate + ", notes = " + this.notes;
+      //  const empDate = !this.startDate ? "undefined" : ""+ this.startDate.toLocalDateString("en-US", options);
+        return "id=" + this.id + ", name=" + this.name + ", gender=" + this.gender +
+            ", profilePic=" + this.profilePic + ", department=" + this.department +
+            ", salary=" + this.salary + ", startDate=" + this.startDate + ", note=" + this.note;
     }
 }
